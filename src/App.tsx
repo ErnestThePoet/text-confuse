@@ -11,7 +11,6 @@ function App() {
       <TextField
         label="输入"
         multiline
-        rows={6}
         value={encText}
         onChange={(e) => setEncText(e.target.value)}
       />
@@ -22,7 +21,6 @@ function App() {
         InputProps={{
           readOnly: true,
         }}
-        rows={6}
         value={antoTransform(encText)}
       />
     </Stack>
