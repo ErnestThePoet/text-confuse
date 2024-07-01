@@ -11,7 +11,7 @@ const antoKeyLengths = Array.from(
     .values()
 ).sort((a, b) => b - a);
 
-export function antoEncode(s: string): string {
+export function antoTransform(s: string): string {
   let result = "";
 
   for (let i = 0; i < s.length; ) {
@@ -26,38 +26,6 @@ export function antoEncode(s: string): string {
 
       if (currentSlice in antoTable) {
         const anto = antoTable[currentSlice];
-        result += anto;
-        foundAnto = true;
-        i += anto.length;
-        break;
-      }
-    }
-
-    if (!foundAnto) {
-      result += s[i];
-      i++;
-    }
-  }
-
-  return result;
-}
-
-export function antoDecode(s: string): string {
-  let result = "";
-
-  for (let i = 0; i < s.length; ) {
-    let foundAnto = false;
-
-    for (const j of antoKeyLengths) {
-      if (i + j > s.length) {
-        continue;
-      }
-
-      const currentSlice = s.substring(i, i + j);
-
-      if (currentSlice in antoTable) {
-        const anto = antoTable[currentSlice];
-
         result += anto;
         foundAnto = true;
         i += anto.length;
